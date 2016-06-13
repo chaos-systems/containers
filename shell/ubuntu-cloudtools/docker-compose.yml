@@ -1,0 +1,8 @@
+version: '2'
+services:
+  shell:
+    build: .
+    volumes:
+      - ~/.aws:/root/.aws
+    tty: true
+    stdin_open: true

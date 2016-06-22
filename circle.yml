@@ -1,0 +1,18 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker info
+
+test:
+  override:
+      - make all BUILDNUM=$CIRCLE_BUILD_NUM BRANCH=$CIRCLE_BRANCH
+
+deployment:
+  hub:
+    branch: /.*/
+    commands:
+            - make push-all

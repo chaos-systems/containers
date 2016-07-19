@@ -49,3 +49,10 @@ ubuntu-devtools:
 
 push-ubuntu-devtools:
 	docker push ${ORG}/ubuntu-devtools
+
+ubuntu-cloudtools: ubuntu-devtools
+	cd shell/ubuntu-cloudtools; docker build -t ${ORG}/ubuntu-cloudtools:${BUILDNUM} .
+	docker tag ${ORG}/ubuntu-cloudtools:${BUILDNUM} ${ORG}/ubuntu-cloudtools:${BRANCH}
+
+push-ubuntu-cloudtools:
+	docker push ${ORG}/ubuntu-cloudtools

@@ -1,4 +1,4 @@
-FROM chaossystems/openjdk-jdk8:masterj
+FROM chaossystems/openjdk-jdk8:master
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Extract and link the artifact

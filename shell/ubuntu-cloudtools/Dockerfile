@@ -1,4 +1,4 @@
-FROM chaossystems/ubuntu-devtools:latest
+FROM chaossystems/ubuntu-devtools:master
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Cloud Tools

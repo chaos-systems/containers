@@ -18,7 +18,7 @@ oracle-jdk8:
 	docker tag ${ORG}/oracle-jdk-8:${BUILDNUM} ${ORG}/oracle-jdk-8:${BRANCH}
 
 push-oracle-jdk8:
-	docker push ${ORG}:oracle-jdk-8
+	docker push ${ORG}/oracle-jdk-8
 
 openjdk-jdk8:
 	cd java/openjdk-jdk-8; docker build -t ${ORG}/openjdk-jdk-8:${BUILDNUM} .

@@ -21,7 +21,7 @@ push-oracle-jdk8:
 	docker push ${ORG}/oracle-jdk-8
 
 # Third Party Applications
-dynamodb: openjdk-jdk8
+dynamodb:
 	cd dynamodb; docker build -t ${ORG}/dynamodb:${BUILDNUM} .
 	docker tag ${ORG}/dynamodb:${BUILDNUM} ${ORG}/dynamodb:${BRANCH}
 

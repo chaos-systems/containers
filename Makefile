@@ -8,9 +8,9 @@ all: java dynamodb shell
 
 shell: ubuntu-devtools ubuntu-cloudtools
 
-java: oracle-jdk8 openjdk-jdk8
+java: oracle-jdk8
 
-push-all: push-oracle-jdk8 push-openjdk-jdk8 push-dynamodb
+push-all: push-oracle-jdk8 push-dynamodb
 
 # Environments
 oracle-jdk8:
@@ -19,20 +19,6 @@ oracle-jdk8:
 
 push-oracle-jdk8:
 	docker push ${ORG}/oracle-jdk-8
-
-openjdk-jdk8:
-	cd java/openjdk-jdk-8; docker build -t ${ORG}/openjdk-jdk-8:${BUILDNUM} .
-	docker tag ${ORG}/openjdk-jdk-8:${BUILDNUM} ${ORG}/openjdk-jdk-8:${BRANCH}
-
-push-openjdk-jdk8:
-	docker push ${ORG}/openjdk-jdk-8
-
-nodejs:
-	cd nodejs; docker build -t ${ORG}/nodejs:${BUILDNUM} .
-	docker tag ${ORG}/nodejs:${BUILDNUM} ${ORG}/nodejs:${BRANCH}
-
-push-nodejs:
-	docker push ${ORG}/nodejs
 
 # Third Party Applications
 dynamodb: openjdk-jdk8

@@ -10,7 +10,7 @@ shell: ubuntu-devtools ubuntu-cloudtools
 
 java: oracle-jdk8
 
-push-all: push-oracle-jdk8 push-dynamodb
+push-all: push-oracle-jdk8 push-dynamodb push-ubuntu-devtools push-ubuntu-cloudtools
 
 # Environments
 oracle-jdk8:

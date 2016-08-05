@@ -8,7 +8,7 @@ RUN apt-get update && \
     # Tools
     fish lsb-release apt-utils vim traceroute wget curl \
     # Development tools sbt
-    git openjdk-8-jdk scala groovy gradle python python-pip ruby && \
+    git openjdk-8-jdk scala groovy gradle python python-pip ruby swift && \
     apt-get clean
 
 ENTRYPOINT ["/usr/bin/fish"]

@@ -1,4 +1,4 @@
-.PHONY: all java shell push-all
+.PHONY: java shell dynamodb
 
 BUILDNUM=local
 BRANCH=local

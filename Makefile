@@ -4,7 +4,7 @@ BUILDNUM=local
 BRANCH=local
 ORG=chaossystems
 
-all: java dynamodb shell
+all: java dynamodb shell swift
 
 shell: ubuntu-devtools ubuntu-cloudtools
 

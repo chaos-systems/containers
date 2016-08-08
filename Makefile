@@ -24,22 +24,22 @@ push-oracle-jdk8:
 
 swift-2-14.04:
 	cd swift/2/14.04; docker build -t ${ORG}/swift-2:14.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-2:${BUILDNUM} ${ORG}/swift-2:14.04
+	docker tag ${ORG}/swift-2:14.04-${BUILDNUM} ${ORG}/swift-2:14.04
 
 swift-2-16.04:
 	cd swift/2/16.04; docker build -t ${ORG}/swift-2:16.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-2:${BUILDNUM} ${ORG}/swift-2:16.04
+	docker tag ${ORG}/swift-2:16.04-${BUILDNUM} ${ORG}/swift-2:16.04
 
 push-swift-2:
 	docker push ${ORG}/swift-2
 
 swift-3-14.04:
 	cd swift/3/14.04; docker build -t ${ORG}/swift-3:14.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-3:${BUILDNUM} ${ORG}/swift-3:14.04
+	docker tag ${ORG}/swift-3:14.04-${BUILDNUM} ${ORG}/swift-3:14.04
 
 swift-3-16.04:
 	cd swift/3/16.04; docker build -t ${ORG}/swift-3:16.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-3:${BUILDNUM} ${ORG}/swift-3:16.04
+	docker tag ${ORG}/swift-3:16.04-${BUILDNUM} ${ORG}/swift-3:16.04
 
 push-swift-3:
 	docker push ${ORG}/swift-3

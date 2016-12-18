@@ -1,10 +1,9 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.10
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
-# https://swift.org/builds/swift-3.0-preview-4/ubuntu1404/swift-3.0-PREVIEW-4/swift-3.0-PREVIEW-4-ubuntu14.04.tar.gz
-ENV SWIFT_BRANCH swift-3.0.1-release
-ENV SWIFT_VERSION 3.0.1-RELEASE
-ENV SWIFT_PLATFORM ubuntu15.10
+ENV SWIFT_BRANCH swift-3.0.2-release
+ENV SWIFT_VERSION 3.0.2-RELEASE
+ENV SWIFT_PLATFORM ubuntu16.04
 
 # Install related packages
 RUN apt-get update && \

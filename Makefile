@@ -10,7 +10,7 @@ shell: ubuntu-devtools ubuntu-cloudtools
 
 java: oracle-jdk8
 
-swift: swift-2-14.04 swift-2-16.04 swift-3-14.04 swift-3-16.04
+swift: swift-2-16.04 swift-2-16.10 swift-3-16.04 swift-3-16.10
 
 push-all: push-oracle-jdk8 push-dynamodb push-ubuntu-devtools push-ubuntu-cloudtools push-swift-2 push-swift-3
 
@@ -22,24 +22,24 @@ oracle-jdk8:
 push-oracle-jdk8:
 	docker push ${ORG}/oracle-jdk-8
 
-swift-2-14.04:
-	cd swift/2/14.04; docker build -t ${ORG}/swift-2:14.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-2:14.04-${BUILDNUM} ${ORG}/swift-2:14.04
-
 swift-2-16.04:
 	cd swift/2/16.04; docker build -t ${ORG}/swift-2:16.04-${BUILDNUM} .
 	docker tag ${ORG}/swift-2:16.04-${BUILDNUM} ${ORG}/swift-2:16.04
 
+swift-2-16.10:
+	cd swift/2/16.10; docker build -t ${ORG}/swift-2:16.10-${BUILDNUM} .
+	docker tag ${ORG}/swift-2:16.10-${BUILDNUM} ${ORG}/swift-2:16.10
+
 push-swift-2:
 	docker push ${ORG}/swift-2
-
-swift-3-14.04:
-	cd swift/3/14.04; docker build -t ${ORG}/swift-3:14.04-${BUILDNUM} .
-	docker tag ${ORG}/swift-3:14.04-${BUILDNUM} ${ORG}/swift-3:14.04
 
 swift-3-16.04:
 	cd swift/3/16.04; docker build -t ${ORG}/swift-3:16.04-${BUILDNUM} .
 	docker tag ${ORG}/swift-3:16.04-${BUILDNUM} ${ORG}/swift-3:16.04
+
+swift-3-16.10:
+	cd swift/3/16.10; docker build -t ${ORG}/swift-3:16.10-${BUILDNUM} .
+	docker tag ${ORG}/swift-3:16.10-${BUILDNUM} ${ORG}/swift-3:16.10
 
 push-swift-3:
 	docker push ${ORG}/swift-3

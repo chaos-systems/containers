@@ -10,7 +10,9 @@ RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu yakkety main' >> 
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
     apt-get update && \
     echo oracle-java${JAVA_VER}-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install -y --no-install-recommends oracle-java${JAVA_VER}-installer oracle-java${JAVA_VER}-set-default && \
+    apt-get install -y --no-install-recommends ca-certificates oracle-java${JAVA_VER}-installer oracle-java${JAVA_VER}-set-default && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists && \
-    rm -rf /var/cache/oracle-jdk${JAVA_VER}-installer
+    rm -rf /var/cache/oracle-jdk${JAVA_VER}-installer && \
+    # Default DNS cache TTL is -1. DNS records, like, change, man.
+    grep '^networkaddress.cache.ttl=' /etc/java-8-oracle/security/java.security || echo 'networkaddress.cache.ttl=60' >> /etc/java-8-oracle/security/java.security \

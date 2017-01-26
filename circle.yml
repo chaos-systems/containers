@@ -1,18 +1,16 @@
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker info
-
-test:
-  override:
-      - make all BUILDNUM=$CIRCLE_BUILD_NUM BRANCH=$CIRCLE_BRANCH
-
-deployment:
-  hub:
-    branch: /.*/
-    commands:
-            - make push-all
+version: 2
+executorType: machine
+stages:
+  build:
+    workDir: ~/docker
+    steps:
+      - type: checkout
+      - type: shell
+        name: Dockerhub login
+        command: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - type: shell
+        name: Build container images
+        command: make build 
+      - type: shell
+        name: Publish container images
+        command: make publish 

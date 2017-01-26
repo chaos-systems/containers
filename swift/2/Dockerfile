@@ -1,13 +1,14 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
-ENV SWIFT_BRANCH swift-3.0.2-release
-ENV SWIFT_VERSION 3.0.2-RELEASE
-ENV SWIFT_PLATFORM ubuntu14.04
+# https://swift.org/builds/swift-2.2.1-release/ubuntu1404/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz
+ENV SWIFT_BRANCH swift-2.2.1-release
+ENV SWIFT_VERSION 2.2.1-RELEASE
+ENV SWIFT_PLATFORM ubuntu15.10
 
 # Install related packages
 RUN apt-get update && \
-    apt-get install -y build-essential wget clang libedit-dev python2.7-dev libxml2 libicu52 && \
+    apt-get install -y build-essential wget clang libedit-dev python2.7-dev libxml2 libicu55 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -25,4 +26,4 @@ RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import - && \
 # Set Swift Path
 ENV PATH /usr/bin:$PATH
 
-ENTRYPOINT ["/usr/bin/swift"]
+CMD ["/usr/bin/swift"]

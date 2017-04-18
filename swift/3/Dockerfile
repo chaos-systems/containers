@@ -9,7 +9,7 @@ ENV SWIFT_ARCHIVE_NAME=swift-${SWIFT_VERSION}-${SWIFT_PLATFORM}.tar.gz
 
 # Install related packages
 RUN apt-get update -y && \
-    apt-get install -y wget curl clang libicu-dev python2.7-dev libxml2 dirmngr && \
+    apt-get install -y wget curl clang libicu-dev python2.7-dev libxml2 dirmngr libcurl3 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

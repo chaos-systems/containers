@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.04
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Base Packages

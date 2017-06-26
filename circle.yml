@@ -11,6 +11,3 @@ stages:
       - type: shell
         name: Build container images
         command: make build 
-      - type: shell
-        name: Publish container images
-        command: make publish 

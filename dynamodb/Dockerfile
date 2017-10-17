@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:9-jre
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Extract and link the artifact

@@ -1,4 +1,4 @@
-FROM chaossystems/ubuntu-devtools:master
+FROM chaossystems/fedora-devtools:master
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Cloud Tools

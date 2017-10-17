@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:26
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 ARG SCALA_VERSION=2.12.2

@@ -1,9 +1,8 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.10
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Base Packages
 RUN apt-get update && \
-    apt-get dist-upgrade -y && \
     apt-get install -y --no-install-recommends \
     # Tools
     fish lsb-release apt-utils vim traceroute wget curl \

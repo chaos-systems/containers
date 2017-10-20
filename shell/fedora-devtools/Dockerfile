@@ -8,7 +8,7 @@ RUN curl -Ls https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-
     dnf makecache && \
     dnf install -y \
     # Tools
-    fish make vim traceroute wget curl \
+    fish tmux make vim traceroute wget curl \
     # Development tools sbt
     git java-1.8.0-openjdk-devel sbt python python-pip ruby nodejs && \
     curl -LsO https://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.rpm && \
@@ -16,4 +16,4 @@ RUN curl -Ls https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-
     sbt update && \
     dnf clean all
 
-ENTRYPOINT ["/usr/bin/fish"]
+CMD ["/usr/bin/tmux"]

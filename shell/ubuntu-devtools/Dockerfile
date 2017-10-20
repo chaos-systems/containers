@@ -5,9 +5,9 @@ MAINTAINER Greg Orzell <chaos@chaossystems.io>
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     # Tools
-    fish lsb-release apt-utils vim traceroute wget curl \
+    fish tmux lsb-release apt-utils vim traceroute wget curl \
     # Development tools sbt
-    git openjdk-8-jdk scala groovy gradle python python-pip ruby && \
+    git openjdk-9-jdk scala groovy gradle python python-pip ruby && \
     apt-get clean
 
-ENTRYPOINT ["/usr/bin/fish"]
+CMD ["/usr/bin/tmux"]

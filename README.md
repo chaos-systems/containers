@@ -1,5 +1,4 @@
 # Base Docker images
 
-[![CircleCI](https://circleci.com/gh/chaos-systems/docker.svg?style=svg)](https://circleci.com/gh/chaos-systems/docker)
+Automated builds are done on Docker Hub.
 
-Builds are published to [Docker Hub](https://hub.docker.com/u/chaossystems/)

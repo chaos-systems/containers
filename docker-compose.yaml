@@ -6,11 +6,7 @@ services:
     build: dynamodb/.
     image: chaossystems/dynamodb:${CIRCLE_BUILD_NUM:-local}
 
-  swift:
-    build: swift/3/.
-    image: chaossystems/swift:3.1.1
-
-  ubuntu-devtools:  
+  ubuntu-devtools:
     build: shell/ubuntu-devtools/.
     image: chaossystems/ubuntu-devtools:${CIRCLE_BUILD_NUM:-local}
 
@@ -22,6 +18,11 @@ services:
   fedora-devtools:
     build: shell/fedora-devtools/.
     image: chaossystems/fedora-devtools:${CIRCLE_BUILD_NUM:-local}
+
+  fedora-alexa:
+    build: shell/fedora-alexa/.
+    image: chaossystems/fedora-alexa:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [fedora-devtools]
 
   fedora-cloudtools:
     build: shell/fedora-cloudtools/.

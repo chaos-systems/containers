@@ -12,4 +12,4 @@ RUN pip install --upgrade pip && \
     apt-get install google-cloud-sdk -y && \
     apt-get clean
 
-ENTRYPOINT ["/usr/bin/fish"]
+CMD ["/usr/bin/tmux"]

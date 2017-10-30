@@ -28,7 +28,8 @@ RUN apt-get update && \
     npm \
     python \
     python-pip \
-    ruby && \
+    ruby \
+    silversearcher-ag && \
     apt-get clean
 
 # Scala Tools

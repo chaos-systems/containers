@@ -7,6 +7,7 @@ RUN pip install --upgrade pip && \
     setuptools \
     aws-mfa \
     awscli && \
+    npm install -g aws-sam-local && \
     npm install -g ask-cli
 
 CMD ["/usr/bin/tmux"]

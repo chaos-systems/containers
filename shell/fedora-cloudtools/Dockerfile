@@ -8,6 +8,7 @@ COPY google-cloud-sdk.repo /etc/yum.repos.d/google-cloud-sdk.repo
 RUN pip install --upgrade pip && \
     pip install setuptools && \
     pip install aws-mfa awscli && \
+    npm install -g aws-sam-local && \
     curl -Lso /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest && \
     chmod +x /usr/local/bin/ecs-cli && \
     # Install the Cloud SDK

@@ -1,4 +1,5 @@
-FROM chaossystems/fedora-devtools:master
+ARG FROM_TAG=master
+FROM chaossystems/fedora-devtools:$FROM_TAG
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 # Alexa/AWS Tools
@@ -7,7 +8,7 @@ RUN pip install --upgrade pip && \
     setuptools \
     aws-mfa \
     awscli && \
-    npm install -g aws-sam-local && \
+    #npm install -g aws-sam-local && \
     npm install -g ask-cli
 
 CMD ["/usr/bin/tmux"]

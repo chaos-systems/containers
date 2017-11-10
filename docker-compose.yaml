@@ -7,24 +7,81 @@ services:
     image: chaossystems/dynamodb:${CIRCLE_BUILD_NUM:-local}
 
   ubuntu-devtools:
-    build: shell/ubuntu-devtools/.
+    build:
+      context: shell/ubuntu-devtools/.
+      args:
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
     image: chaossystems/ubuntu-devtools:${CIRCLE_BUILD_NUM:-local}
 
+  ubuntu-devtools-onbuild:
+    build:
+      context: shell/onbuild-user/.
+      args:
+        - FROM_IMAGE=chaossystems/ubuntu-devtools
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/ubuntu-devtools-onbuild:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [ubuntu-devtools]
+
   ubuntu-cloudtools:  
-    build: shell/ubuntu-cloudtools/.
+    build:
+      context: shell/ubuntu-cloudtools/.
+      args:
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
     image: chaossystems/ubuntu-cloudtools:${CIRCLE_BUILD_NUM:-local}
     depends_on: [ubuntu-devtools]
+
+  ubuntu-cloudtools-onbuild:
+    build:
+      context: shell/onbuild-user/.
+      args:
+        - FROM_IMAGE=chaossystems/ubuntu-cloudtools
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/ubuntu-cloudtools-onbuild:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [ubuntu-cloudtools]
 
   fedora-devtools:
     build: shell/fedora-devtools/.
     image: chaossystems/fedora-devtools:${CIRCLE_BUILD_NUM:-local}
 
+  fedora-devtools-onbuild:
+    build:
+      context: shell/onbuild-user/.
+      args:
+        - FROM_IMAGE=chaossystems/fedora-devtools
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/fedora-devtools-onbuild:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [fedora-devtools]
+
+
+  fedora-cloudtools:
+    build:
+      context: shell/fedora-cloudtools/.
+      args:
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/fedora-cloudtools:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [fedora-devtools]
+
+  fedora-cloudtools-onbuild:
+    build:
+      context: shell/onbuild-user/.
+      args:
+        - FROM_IMAGE=chaossystems/fedora-cloudtools
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/fedora-cloudtools-onbuild:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [fedora-cloudtools]
+
   fedora-alexa:
-    build: shell/fedora-alexa/.
+    build:
+      context: shell/fedora-alexa/.
+      args:
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
     image: chaossystems/fedora-alexa:${CIRCLE_BUILD_NUM:-local}
     depends_on: [fedora-devtools]
 
-  fedora-cloudtools:
-    build: shell/fedora-cloudtools/.
-    image: chaossystems/fedora-cloudtools:${CIRCLE_BUILD_NUM:-local}
-    depends_on: [fedora-devtools]
+  fedora-uber:
+    build:
+      context: shell/fedora-uber/.
+      args:
+        - FROM_TAG=${CIRCLE_BUILD_NUM:-local}
+    image: chaossystems/fedora-uber:${CIRCLE_BUILD_NUM:-local}
+    depends_on: [fedora-cloudtools-onbuild]

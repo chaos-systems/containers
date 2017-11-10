@@ -2,8 +2,6 @@ FROM fedora:26
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 ARG SCALA_VERSION=2.12.4
-ARG USER=root
-ARG HOME=/root
 
 # Base Packages
 RUN dnf makecache && \
@@ -12,6 +10,7 @@ RUN dnf makecache && \
     curl \
     fish \
     fzf \
+    go \
     hostname \
     make \
     sudo \
@@ -25,9 +24,11 @@ RUN dnf makecache && \
     java-1.8.0-openjdk-devel \
     python \
     python-pip \
-    ruby \
-    nodejs && \
-    dnf clean all
+    ruby
+
+# Node
+RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - && \
+    yum -y install nodejs
 
 # Scala Tools
 RUN curl -Lso /etc/yum.repos.d/bintray-sbt-rpm.repo https://bintray.com/sbt/rpm/rpm && \
@@ -40,12 +41,4 @@ RUN curl -Lso /etc/yum.repos.d/bintray-sbt-rpm.repo https://bintray.com/sbt/rpm/
     chmod +x /usr/local/bin/amm && \
     dnf clean all
 
-RUN if [ "$USER" != "root" ]; then \
-    useradd -ms /usr/bin/fish $USER; \
-    usermod $USER -a -G wheel; \
-    sed -i 's/# %wheel/%wheel/' /etc/sudoers; \
-    fi
-
-USER $USER:$USER
-WORKDIR $HOME
 CMD ["/usr/bin/tmux"]

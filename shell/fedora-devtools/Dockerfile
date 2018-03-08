@@ -1,4 +1,4 @@
-FROM fedora:26
+FROM fedora:27
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
 ARG SCALA_VERSION=2.12.4
@@ -21,7 +21,7 @@ RUN dnf makecache && \
     wget \
     # Development tools sbt
     git \
-    java-1.8.0-openjdk-devel \
+    java-9-openjdk-devel \
     python \
     python-pip \
     ruby
@@ -37,7 +37,7 @@ RUN curl -Lso /etc/yum.repos.d/bintray-sbt-rpm.repo https://bintray.com/sbt/rpm/
     sbt \
     scala-$SCALA_VERSION.rpm && \
     sbt update && \
-    curl -Lso /usr/local/bin/amm https://github.com/lihaoyi/Ammonite/releases/download/1.0.3/2.12-1.0.3 && \
+    curl -Lso /usr/local/bin/amm https://github.com/lihaoyi/Ammonite/releases/download/1.0.5/2.12-1.0.5 && \
     chmod +x /usr/local/bin/amm && \
     dnf clean all
 

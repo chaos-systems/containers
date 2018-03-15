@@ -1,0 +1,24 @@
+version: "3.5"
+
+services:
+
+  # May need to set "xhost local:root"
+  jmeter-gui:
+    build: .
+    tty: true
+    stdin_open: true
+    working_dir: /workspace
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - .:/workspace:rw
+
+  jmeter:
+    build: .
+    tty: true
+    stdin_open: true
+    working_dir: /workspace
+    entrypoint: ["/jmeter/bin/jmeter", "-n", "-t"]
+    volumes:
+      - .:/workspace:rw

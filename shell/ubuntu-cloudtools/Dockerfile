@@ -17,6 +17,8 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
     #npm install -g aws-sam-local && \
     curl -Lso /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest && \
     chmod +x /usr/local/bin/ecs-cli && \
-    apt-get clean
+    apt-get clean -y && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/bin/tmux"]

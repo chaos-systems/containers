@@ -1,0 +1,22 @@
+FROM debian:stable-slim
+
+ARG PROTOBUF_VERSION=3.5.1
+
+WORKDIR /opt/protoc
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y curl unzip
+
+RUN curl -LsO https://github.com/google/protobuf/releases/download/v$PROTOBUF_VERSION/protoc-$PROTOBUF_VERSION-linux-x86_64.zip && \
+    unzip protoc-$PROTOBUF_VERSION-linux-x86_64.zip && \
+    rm -f protoc-$PROTOBUF_VERSION-linux-x86_64.zip
+
+# Cleanup
+RUN apt-get remove -y curl unzip && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+ENTRYPOINT ["/opt/protoc/bin/protoc"]

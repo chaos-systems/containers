@@ -41,7 +41,8 @@ RUN wget https://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSI
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
     apt-get update && \
     apt-get install sbt && \
-    apt-get clean
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN if [ "$USER" != "root" ]; then \
     useradd -ms /usr/bin/fish $USER; \

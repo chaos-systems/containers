@@ -30,7 +30,9 @@ RUN apt-get update && \
     python-pip \
     ruby \
     silversearcher-ag && \
-    apt-get clean
+    apt-get clean -y && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Scala Tools
 RUN wget https://downloads.lightbend.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.deb && \

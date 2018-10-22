@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+
+  fedora-devtools:
+    build:
+      args:
+        USER: gorzell
+        HOME: /home/gorzell
+    tty: true
+    stdin_open: true
+    environment:
+      - SHELL=/usr/bin/fish
+    volumes:
+      - ~/.ssh:/home/gorzell/.ssh:rw
+      - ~/.aws:/home/gorzell/.aws:rw
+      - ~/.aws/credentials:/home/gorzell/.aws/credentials:rw
+      - ~/.config/fish/config.fish:/home/gorzell/.config/fish/config.fish:ro
+      - ~/.config/fish/functions:/home/gorzell/.config/fish/functions:ro
+      - ~/.vimrc:/home/gorzell/.vimrc:ro
+      - ~/.vim:/home/gorzell/.vim:ro 
+      - ~/.tmux.conf:/home/gorzell/.tmux.conf:ro

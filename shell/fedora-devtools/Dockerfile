@@ -1,7 +1,7 @@
-FROM fedora:27
+FROM fedora:28
 MAINTAINER Greg Orzell <chaos@chaossystems.io>
 
-ARG SCALA_VERSION=2.12.4
+ARG SCALA_VERSION=2.12.7
 
 # Base Packages
 RUN dnf makecache && \
